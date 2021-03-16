@@ -1,1 +1,9 @@
-<ng-container rwGainNode></ng-container>
+<audio src="./assets/StarWars60.wav" rwMediaElementAudioSourceNode>
+  <ng-container #node="AudioNode" rwDelayNode [delayTime]="0.2">
+      <ng-container rwGainNode [gain]="0.5">
+          <ng-container [rwOutput]="node"></ng-container>
+          <ng-container rwAudioDestinationNode></ng-container>
+      </ng-container>
+  </ng-container>
+  <ng-container rwAudioDestinationNode></ng-container>
+</audio>

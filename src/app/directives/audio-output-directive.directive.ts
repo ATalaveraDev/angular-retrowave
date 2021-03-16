@@ -3,11 +3,11 @@ import { Directive, Inject, Input, OnDestroy } from '@angular/core';
 import { AUDIO_CONTEXT, AUDIO_NODE } from '../services/web-audio-api.service';
 
 @Directive({
-  selector: '[waOutput]'
+  selector: '[rwOutput]'
 })
-export class RetroWaveAudioOutputDirectiveDirective extends GainNode implements OnDestroy {
+export class AudioOutputDirectiveDirective extends GainNode implements OnDestroy {
   @Input()
-  set waOutput(destination: AudioNode | undefined) {
+  set rwOutput(destination: AudioNode | undefined) {
     this.disconnect();
 
     if (destination) {

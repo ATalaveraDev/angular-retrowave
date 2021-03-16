@@ -1,8 +1,8 @@
-import { Directive, forwardRef, Inject, Input, OnDestroy, SkipSelf } from '@angular/core';
-import { AUDIO_CONTEXT, AUDIO_NODE } from '../services/web-audio-api.service';
+import { Directive, forwardRef, Inject, Input, OnDestroy, SkipSelf } from "@angular/core";
+import { AUDIO_CONTEXT, AUDIO_NODE } from "../services/web-audio-api.service";
 
 @Directive({
-  selector: '[rwGainNode]',
+  selector: '[rwDelayNode]',
   inputs: [
     'channelCount',
     'channelCountMode',
@@ -11,13 +11,13 @@ import { AUDIO_CONTEXT, AUDIO_NODE } from '../services/web-audio-api.service';
   exportAs: 'AudioNode',
   providers: [{
     provide: AUDIO_NODE,
-    useExisting: forwardRef(() => RetroWaveGainNodeDirective)
+    useExisting: forwardRef(() => DelayNodeDirective)
   }]
 })
-export class RetroWaveGainNodeDirective extends GainNode implements OnDestroy {
-  @Input('gain')
-  set gainSetter(value: number) {
-    this.gain.value = value;
+export class DelayNodeDirective extends DelayNode implements OnDestroy {
+  @Input('delayTime')
+  set delaySetter(value: number) {
+    this.delayTime.value = value;
   }
 
   constructor(@Inject(AUDIO_CONTEXT) context: AudioContext, @SkipSelf() @Inject(AUDIO_NODE) node: AudioNode | null) {
